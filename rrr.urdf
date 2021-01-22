@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+<robot name="rrr">
+  
+  <material name="red">
+    <color rgba="1 0 0 0.8" />
+  </material>
+  <material name="green">
+    <color rgba="0 1 0 0.8" />
+  </material>
+
+  <link name="base_link" />
+  <link name="silindir1">
+    <visual>
+      <geometry>        
+        <cylinder radius="0.2" length = "0.6"/>
+      </geometry>      
+      <material name="green" />
+    </visual>
+  </link>
+
+  <link name="silindir2">
+    <visual>
+      <geometry>
+        <cylinder radius="0.1" length = "2.0"/>
+      </geometry>
+      <material name="green" />
+     <origin xyz ='0 0 -1'/>
+    </visual>
+  </link>
+
+  <link name="silindir3">
+    <visu
+      <geometry>
+        <cylinder radius="0.2" length = "0.6"/>
+      </geometry>
+      <origin xyz ='0 0 0.3'/>
+    </visual>
+  </link>
+
+  <link name="silindir4">
+    <visual>
+      <geometry>
+        <cylinder radius="0.1" length = "2.0"/>
+      </geometry>
+      <origin xyz ='0 1 0' rpy= '1.5708 0 0 '/>
+    </visual>
+  </link>
+
+  <link name="end">
+    <visual>
+      <geometry>
+        <cylinder radius="0.2" length = "0.6"/>
+      </geometry>
+      <material name="red" />
+     <origin xyz ='0 0 0' />
+    </visual>
+  </link>
+
+  <joint name="j1" type="continuous">
+    <parent link="base_link" />
+    <child link="silindir1" />
+    <axis xyz="0 0 1" />
+  </joint>
+  
+  <joint name="j2" type="fixed">
+    <parent link="silindir1" />
+    <child link="silindir2" />
+    <origin xyz ='0 0 2'/>
+  </joint>
+  
+  <joint name="j3" type="fixed">
+    <parent link="silindir2" />
+    <child link="silindir3" />
+    <origin xyz="0 0 -0.3" />
+  </joint>
+
+  <joint name="j4" type="continuous">
+    <parent link="silindir3" />
+    <child link="silindir4" />
+    <origin xyz="0 0 0.3" />
+    <axis xyz="0 1 0" />
+  </joint>
+
+  <joint name="j5" type="continuous">
+    <parent link=silindir4" />
+    <child link="end" />
+    <origin xyz="0 2 0" /> 
+    <axis xyz="1 0 0" />  
+  </joint>
+  
+</robot>
